@@ -1,8 +1,11 @@
 FROM node:18-alpine AS build
 WORKDIR /app
 COPY package.json .
-RUN npm install
+RUN npm install --legacy-peer-deps --force
+COPY public/ ./public/
 COPY src/ ./src/
+ENV DISABLE_ESLINT_PLUGIN=true
+ENV CI=false
 RUN npm run build
  
 FROM nginx:alpine

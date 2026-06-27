@@ -1,21 +1,9 @@
 version: "3.9"
- 
 services:
   backend:
     build: .
     container_name: thee-sentinel-backend
-    environment:
-      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
-      - GITHUB_TOKEN=${GITHUB_TOKEN}
-      - ADO_TOKEN=${ADO_TOKEN}
-      - ADO_ORG=${ADO_ORG}
-      - ADO_PROJECT=${ADO_PROJECT}
-      - TEAMS_WEBHOOK_URL=${TEAMS_WEBHOOK_URL}
-      - SMTP_HOST=${SMTP_HOST}
-      - SMTP_USER=${SMTP_USER}
-      - SMTP_PASS=${SMTP_PASS}
-      - SMTP_TO=${SMTP_TO}
-      - K8S_NAMESPACE=${K8S_NAMESPACE:-default}
+    env_file: .env
     volumes:
       - sentinel_data:/app/data
     restart: unless-stopped
@@ -24,7 +12,7 @@ services:
     build: ./frontend
     container_name: thee-sentinel-frontend
     ports:
-      - "80:80"
+      - "3000:80"
     depends_on:
       - backend
     restart: unless-stopped
