@@ -1,0 +1,14 @@
+{
+  "default": {
+    "github_repo": "your-org/your-repo",
+    "dependency_block_threshold": 40,
+    "auto_fix_allowed": true,
+    "notify_email": true,
+    "notify_teams": true
+  },
+  "thee-sentinel-demo": {
+    "github_repo": "your-org/demo-repo",
+    "dependency_block_threshold": 35,
+    "auto_fix_allowed": true
+  }
+}

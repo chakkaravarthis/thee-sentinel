@@ -1,0 +1,10 @@
+.env
+secrets/
+*.b64
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+node_modules/
+frontend/build/
+*.db
